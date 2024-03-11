@@ -1,9 +1,13 @@
+```markdown
 # CIS450-Project3
 
+This repository contains the implementation and documentation for Project 3 in CIS 450.
+
 ## Question 1
- 
+
 ### Implementation
 
+```cpp
 // Declare constants
 const MAX = 100
 
@@ -69,14 +73,26 @@ function main(argc, argv)
     // Deallocate memory
     delete[] buffer
     exit(0)
+```
 
 ### Run the program
-In the launch.json file, you should be able to change the args - "args": ["Number of iterations", "Buffer size"]
 
+In the `launch.json` file, you should be able to change the args:
+
+```json
+"args": ["Number of iterations", "Buffer size"]
+```
+
+To compile and run the program:
+
+```bash
 gcc boundedBuffer.cpp -o boundedBuffer
 ./boundedBuffer <Number of Iterations> <Buffer Size>
+```
 
 Sample outputs:
+
+```bash
 $ ./boundedBuffer 100 100
 the total is 4950
 the total is 4950
@@ -91,16 +107,33 @@ $ ./boundedBuffer 1000 10
 the total is 440711
 the total is 415469
 the total is 642320
+```
 
 ## Question 2
- 
+
 ### Implementation
+
+```plaintext
+// Implementation details for Question 2
+```
 
 ### Run the program
 
+```plaintext
+// Instructions to run the program for Question 2
+```
 
 ## Question 3
- 
+
 ### Implementation
 
+```plaintext
+// Implementation details for Question 3
+```
+
 ### Run the program
+
+```plaintext
+// Instructions to run the program for Question 3
+```
+```
