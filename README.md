@@ -3,6 +3,7 @@
 ## Question 1
  
 ### Implementation
+
 // Declare constants
 const MAX = 100
 
@@ -71,6 +72,7 @@ function main(argc, argv)
 
 ### Run the program
 In the launch.json file, you should be able to change the args - "args": ["Number of iterations", "Buffer size"]
+
 gcc boundedBuffer.cpp -o boundedBuffer
 ./boundedBuffer <Number of Iterations> <Buffer Size>
 
