@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": ["100", "10"], // Replace <Number_of_Iterations> with actual number
+            "args": ["1000", "10"], // Replace <Number_of_Iterations> with actual number
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
