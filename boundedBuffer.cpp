@@ -1,74 +1,79 @@
-/*
- * boundedBuffer.c
- *
- * A complete example of simple producer/consumer program. The Producer
- * and Consumer functions are executed as independent threads.  They
- * share access to a single buffer.  The producer deposits a sequence
- * of integers from 1 to numIters into the buffer.  The Consumer fetches
- * these values and adds them.  Two semaphores,sem_empty and sem_full are used to
- * ensure that the producer and consumer alternate access to the buffer.
- *
- * This version uses thread coordination to ensure that the
- * consumer only reads valid data and the producer doesn't overwrite unread
- * data.
- */
 #include <chrono>
 #include <iostream>
 #include <semaphore>
 #include <thread>
+#include <vector>
+#include <mutex>
 
 using namespace std;
 
 const int MAX = 100; // the maximum possible value of the internal counter for semaphores
-
-int buffer; // shared buffer, size = 1
+int* buffer; // shared buffer, size = n
 int numIters;
+int buffSize; 
+int front = 0;
+int rear = 0;
 
 // deposit 1, ..., numIters into the data buffer
-void Producer(counting_semaphore<MAX> &sem_empty, counting_semaphore<MAX> &sem_full)
+void Producer(counting_semaphore<MAX> &sem_empty, counting_semaphore<MAX>&sem_full, int id)
 {
     for (int produced = 0; produced < numIters; produced++)
     {
-        sem_empty.acquire();
-        buffer = produced;
-        sem_full.release();
+    sem_empty.acquire();
+    buffer[rear] = produced;
+    rear = (rear + 1) % buffSize;
+    sem_full.release();
     }
 }
-
 // fetch numIters items from the buffer and sum them
-void Consumer(counting_semaphore<MAX> &sem_empty, counting_semaphore<MAX> &sem_full)
+void Consumer(counting_semaphore<MAX> &sem_empty, counting_semaphore<MAX>&sem_full, int id)
 {
     int total = 0;
-
     for (int consumed = 0; consumed < numIters; consumed++)
     {
-        sem_full.acquire();
-        total = total + buffer;
-        sem_empty.release();
+    sem_full.acquire();
+    total += buffer[front];
+    front = (front + 1) % buffSize;
+    sem_empty.release();
     }
-
     printf("the total is %d\n", total);
 }
-
 // main() -- read command line and create threads
 int main(int argc, char *argv[])
 {
     thread producer, consumer;
-
-    if (argc < 2)
+    if (argc < 3)
     {
-        printf("Usage: boundedBuffer <Number of Iterations>\n");
-        exit(0);
+    printf("Usage: boundedBuffer <Number of Iterations>\n");
+    exit(0);
     }
     numIters = atoi(argv[1]);
+    buffSize = atoi(argv[2]);
+    buffer = new int[buffSize]; // dynamically allocate memory
 
     counting_semaphore<MAX> sem_empty(1);
     counting_semaphore<MAX> sem_full(0);
+    vector<thread> producers;
+    vector<thread> consumers;
 
-    producer = thread(Producer, ref(sem_empty), ref(sem_full));
-    consumer = thread(Consumer, ref(sem_empty), ref(sem_full));
+    // Create 3 producers and 3 consumers
+    for (int i = 0; i < 3; i++)
+    {
+        producers.emplace_back(Producer, ref(sem_empty), ref(sem_full), i);
+        consumers.emplace_back(Consumer, ref(sem_empty), ref(sem_full), i);
+    }
 
-    producer.join();
-    consumer.join();
+    // Join producer and consumer threads
+    for (auto &producer : producers)
+    {
+        producer.join();
+    }
+
+    for (auto &consumer : consumers)
+    {
+        consumer.join();
+    }
+
+    delete[] buffer;
     exit(0);
 }
