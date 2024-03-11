@@ -111,10 +111,43 @@ the total is 642320
 ## Question 2
 
 ### Implementation
-
+This is the pseudocode provided in this Assignment.
 ```plaintext
-// Implementation details for Question 2
+void OneVehicle() {
+int direc = rand() % 2;
+ArriveBridge(direc);
+CrossBridge(direc);
+ExitBridge(direc);
+}
+void CrossBridge (int direc) {
+//crossing the bridge;
+}
+monitor Bridge {
+Condition safe;
+int currentDirec;
+int currentNumber;
+void ArriveBridge(int direc) {
+while (!isSafe(direc) )
+safe.Wait();
+currentNumber++;
+currentDirec = direc;
+}
+void ExitBridge(Bridge::Direction direc) {
+currentNumber--;
+safe.Broadcast();
+}
+bool isSafe(int direc) {
+if ( currentNumber == 0 )
+return TRUE; // always safe when bridge is empty
+else if ((currentNumber < 3) && (currentDirec == direc))
+return TRUE; // room for us to follow others in direc
+else
+return FALSE; // bridge is full or has oncoming traffic.
+}
+}
+
 ```
+Implement the pseudoco in C++ and create the main function to initialize all the values of the monitor and create 50 child threads.
 
 ### Run the program
 
