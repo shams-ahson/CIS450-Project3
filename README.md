@@ -1,4 +1,3 @@
-```markdown
 # CIS450-Project3
 
 This repository contains the implementation and documentation for Project 3 in CIS 450.
