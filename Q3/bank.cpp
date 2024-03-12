@@ -3,6 +3,7 @@
 #include <mutex>
 #include <thread>
 #include <chrono>
+#include <vector>
 using namespace std;
 
 class Bank {
@@ -29,30 +30,41 @@ class Bank {
         }
 };
 
-void customerDeposit(int amount, Bank& acct) {
-    //while(!end) {
+void customerAction(int customerID, Bank& acct) {
+    int depositAmt = rand() % 100 + 1;
+    int withdrawAmt = rand() % 100 + 1;
     int lunchtime = rand() % 5 + 1;
-    acct.deposit(amount);
-    this_thread::sleep_for(chrono::seconds(lunchtime));
-    //}
+
+    if(rand() % 2 == 0) {
+        acct.deposit(depositAmt);
+        cout << "Customer" << customerID << " Deposited: " << depositAmt << endl;
+    }
+    else{
+        acct.withdraw(withdrawAmt);
+        cout << "Customer" << customerID << " Withdrew: " << withdrawAmt << endl;
+
+    }
+    this_thread::sleep_for(chrono::milliseconds(lunchtime));
 }
 
-void customerWithdraw(int amount, Bank& acct) {
-   // while(!end) {
-    int lunchtime = rand() % 5 + 1;
-    acct.withdraw(amount);
-    this_thread::sleep_for(chrono::seconds(lunchtime));
-   // }
-}
 
-int main() { //change to use command line args
+int main(int argc, char* argv[]) { //change to use command line args
+    if(argc != 2) {
+        cout << "Usage: bank <# of customers>" << endl;
+        return 1;
+    }
+    int numCustomers = atoi(argv[1]);
+    srand(static_cast<unsigned int>(time(0)));
     Bank myBank;
-    thread customer1(customerDeposit, 100, ref(myBank));
-    thread customer2(customerWithdraw, 51, ref(myBank));
-    //this_thread::sleep_for(chrono::seconds(10));
-    customer1.join();
-    customer2.join();
-    cout << "Balance: " << myBank.getBalance() << endl;
+    vector<thread> customers;
+    
+    for(int i = 0; i < numCustomers; i++) {
+        customers.emplace_back(customerAction, i, ref(myBank));
+    }
+    for (auto& thread:customers) {
+        thread.join();
+    }
+    cout << "Final Balance: " << myBank.getBalance() << endl;
     
     return 0;
 }
