@@ -147,7 +147,7 @@ return FALSE; // bridge is full or has oncoming traffic.
 }
 
 ```
-Implement the pseudoco in C++ and create the main function to initialize all the values of the monitor and create 50 child threads.
+Implement the pseudocode in C++ and create the main function to initialize all the values of the monitor and create 50 child threads.
 
 ### Run the program
 
