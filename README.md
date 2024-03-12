@@ -319,8 +319,21 @@ Question 3 Part A implements a monitor that represents the savings account that 
 
 ### Pseudocode (given by professor)
 ```plaintext
-    
-
+    Monitor Bank {
+        int balance = 0
+        cond okToWithdraw;
+        void Deposit(int amount) {
+            balance = balance + amount;
+            okToWithdraw->broadcast();
+        }
+        void Withdraw(int amount) {
+            //wait for funds
+            while (amount > balance) {
+                okToWithdraw->wait();
+            }
+            balance = balance – amount;
+        }
+    }
 ```
 
 ### Run the program: Sample Outputs
@@ -366,7 +379,7 @@ Final Balance: 38
 ### Implementation
 
 ```plaintext
-Question 3 Part B implements the monitor but adds the First Come First Serve to all withdrawals. This is a FIFO structure implemented. 
+Question 3 Part B implements the monitor but adds the First Come First Serve to all withdrawals. This is a FIFO structure implemented, as withdrawls must wait until sufficent balance is encountered, but waiting withdrawals are prioritized to complete prior to new ones.
 ```
 
 ### Pseudocode (given by professor)
@@ -400,3 +413,70 @@ Question 3 Part B implements the monitor but adds the First Come First Serve to 
 ```
 
 ### Run the program: Sample Outputs
+In the `launch.json` file, you should be able to change the args:
+
+```json
+"args": ["Number of customers"]
+```
+
+To compile and run the program:
+
+```bash
+gcc FCFS_bank.cpp -o FCFS_bank
+./FCFS_bank <Number of Customers>
+
+```bash
+$ ./FCFS_bank -o FCFS_bank 3
+Customer 1 wants to deposit: 74, Current Balance: 0
+Customer 2 wants to withdraw: 173, Current Balance: 74
+Customer 3 wants to deposit: 4, Current Balance: 74
+Customer 3 deposited: 4, Current Balance: 78
+Customer 2 withdrew: 73, Current Balance: 5
+Final Balance: 5
+
+$ ./FCFS_bank -o FCFS_bank 4
+Customer 1 wants to deposit: 54, Current Balance: 0
+Customer 1 deposited: 54, Current Balance: 54
+Customer 3 wants to withdraw: 73, Current Balance: 54
+Customer 2 wants to deposit: 21, Current Balance: 54
+Customer 2 deposited: 21, Current Balance: 75
+Customer 3 withdrew: 73, Current Balance: 2
+Customer 4 wants to deposit: 8, Current Balance: 2
+Customer 4 deposited: 8, Current Balance: 10
+Final Balance: 10
+
+$ ./FCFS_bank -o FCFS_bank 10
+Customer 2 wants to deposit: 96, Current Balance: 0
+Customer 2 deposited: 96, Current Balance: 96
+Customer 7 wants to withdraw: 85, Current Balance: 96
+Customer 7 withdrew: 85, Current Balance: 11
+Customer 4 wants to withdraw: 27, Current Balance: 11
+Customer 6 wants to withdraw: 66, Current Balance: 11
+Customer 9 wants to deposit: 57, Current Balance: 11
+Customer 9 deposited: 57, Current Balance: 68
+Customer 4 withdrew: 27, Current Balance: 41
+Customer 10 wants to withdraw: 54, Current Balance: 41
+Customer 8 wants to deposit: 90, Current Balance: 41
+Customer 8 deposited: 90, Current Balance: 131
+Customer 6 withdrew: 66, Current Balance: 65
+Customer 10 withdrew: 54, Current Balance: 11
+Customer 1 wants to deposit: 26, Current Balance: 11
+Customer 1 deposited: 26, Current Balance: 37
+Customer 3 wants to withdraw: 2, Current Balance: 37
+Customer 3 withdrew: 2, Current Balance: 35
+Customer 5 wants to deposit: 62, Current Balance: 35
+Customer 5 deposited: 62, Current Balance: 97
+Final Balance: 97
+
+$ ./FCFS_bank -o FCFS_bank 1
+Customer 1 wants to deposit: 32, Current Balance: 0
+Customer 1 deposited: 32, Current Balance: 32
+Final Balance: 32
+
+$ ./FCFS_bank -o FCFS_bank 2
+Customer 2 wants to withdraw: 80, Current Balance: 0
+Customer 1 wants to deposit: 85, Current Balance: 0
+Customer 1 deposited: 85, Current Balance: 85
+Customer 2 withdrew: 80, Current Balance: 5
+Final Balance: 5
+```
