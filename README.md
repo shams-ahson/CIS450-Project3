@@ -151,8 +151,161 @@ Implement the pseudocode in C++ and create the main function to initialize all t
 
 ### Run the program
 
+gcc bridge.cpp -o bridge
+./bridge
+
+Sample outputs:
 ```plaintext
-// Instructions to run the program for Question 2
+Car 25 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 1.
+Car 25 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 1.
+Car 20 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 20 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 34 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 34 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 34 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 20 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 25 traveling in direction 1 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 41 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 1.
+Car 41 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 7 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 7 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 18 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 18 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 7 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 18 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 36 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 36 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 41 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 29 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 29 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 36 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 29 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 44 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 1.
+Car 44 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 8 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 8 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 13 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 13 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 13 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 16 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 16 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 8 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 37 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 37 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 44 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 45 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 45 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 16 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 37 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 10 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 10 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 3 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 3 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 45 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 3 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 10 traveling in direction 1 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 33 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 1.
+Car 33 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 5 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 5 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 6 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 6 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 5 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 21 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 21 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 33 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 19 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 19 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 6 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 46 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 46 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 46 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 21 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 19 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 24 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 1.
+Car 24 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 4 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 4 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 26 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 26 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 26 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 22 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 22 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 4 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 24 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 22 traveling in direction 1 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 30 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 1.
+Car 30 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 12 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 12 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 39 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 39 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 39 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 28 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 28 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 12 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 30 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 49 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 49 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 48 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 48 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 28 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 11 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 11 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 48 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 27 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 27 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 49 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 15 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 15 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 27 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 32 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 32 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 11 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 15 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 38 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 38 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 2.
+Car 47 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 3.
+Car 47 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 3.
+Car 32 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 2.
+Car 38 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 2 traveling in direction 0 has arrived at the bridge. CurrDir: 0. #Cars: 2.
+Car 2 traveling in direction 0 is crossing the bridge. CurrDir: 0. #Cars: 1.
+Car 47 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 1.
+Car 2 traveling in direction 0 has exited from the bridge. CurrDir: 0. #Cars: 0.
+Car 31 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 1.
+Car 31 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 2.
+Car 0 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 0 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 1 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 1 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 1 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 43 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 43 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 31 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 23 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 23 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 43 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 35 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 35 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 0 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 40 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 40 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 23 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 17 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 17 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 40 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 35 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 9 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 2.
+Car 9 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 14 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 14 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 17 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 42 traveling in direction 1 has arrived at the bridge. CurrDir: 1. #Cars: 3.
+Car 42 traveling in direction 1 is crossing the bridge. CurrDir: 1. #Cars: 3.
+Car 9 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 2.
+Car 14 traveling in direction 1 has exited from the bridge. CurrDir: 1. #Cars: 1.
+Car 42 traveling in direction 1 has exited from the bridge. CurrDir: 0. #Cars: 0.
 ```
 
 ## Question 3 Part A
