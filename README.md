@@ -155,17 +155,95 @@ Implement the pseudocode in C++ and create the main function to initialize all t
 // Instructions to run the program for Question 2
 ```
 
-## Question 3
+## Question 3 Part A
 
 ### Implementation
 
 ```plaintext
-// Implementation details for Question 3
+Question 3 Part A implements a monitor that represents the savings account that is shared by numerous customers. Each customer can deposit and withdraw, only if there is enough in the balance for withdrawal to occur. A mutex lock is used to ensure mutual exclusion of threads.
+
 ```
 
-### Run the program
+### Pseudocode (given by professor)
+```plaintext
+    
+
+```
+
+### Run the program: Sample Outputs
+
+In the `launch.json` file, you should be able to change the args:
+
+```json
+"args": ["Number of customers"]
+```
+
+To compile and run the program:
+
+```bash
+gcc bank.cpp -o bank
+./bank <Number of Customers>
+```
+
+Sample outputs:
+
+```bash
+$ ./bank 3
+Customer 1 deposited: 99
+Customer 2 withdrew: 7
+Customer 3 withdrew: 31
+Final Balance: 61
+
+$ ./bank 2
+Customer 1 deposited: 89
+Customer 2 withdrew: 14
+Final Balance: 75
+
+$ ./bank 5
+Customer 1 deposited: 89
+Customer 2 withdrew: 72
+Customer 5 deposited: 43
+Customer 3 withdrew: 1
+Customer 4 withdrew: 21
+Final Balance: 38
+```
+
+## Question 3 Part B
+
+### Implementation
 
 ```plaintext
-// Instructions to run the program for Question 3
+Question 3 Part B implements the monitor but adds the First Come First Serve to all withdrawals. This is a FIFO structure implemented. 
 ```
+
+### Pseudocode (given by professor)
+```plaintext
+    Monitor FCFSBank {
+        int balance = 0;
+        int numOfWithdraw = 0;
+        cond okToWithdraw;
+        cond okToBank;
+        void Deposit(int amount) {
+            balance = balance + amount;
+            okToWithdraw->signal(); //it is also fine,
+            okToWithdraw->broadcast();
+            }
+        void Withdraw(int amount) {
+            numOfWithdraw++;
+        //Somebody is ahead, wait for turn
+            if (numOfWithdraw > 1) { //it cannot be a while
+        loop
+            okToBank->wait();
+            }
+        //wait for funds
+            while (amount > balance) {
+                okToWithdraw->wait();
+            }
+            balance = balance â amount;
+            numOfWithdraw--;
+            okToBank->signal(); // signal the next withdraw
+            }
+        }
 ```
+
+### Run the program: Sample Outputs

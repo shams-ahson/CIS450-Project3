@@ -18,7 +18,7 @@ class Bank {
             //function for customer to deposit one thread at a time and signals withdrawal 
             unique_lock<mutex> lock(mtx);
             balance = balance + amount;
-            okToWithdraw.notify_all(); //signal ALL withdrawals
+            okToWithdraw.notify_one(); //signal withdrawals
         }
         void withdraw(int amount) {
             //function for customer to withdraw, waits for mutex and sufficient funds
