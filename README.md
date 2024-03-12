@@ -273,14 +273,8 @@ gcc FCFS_bank.cpp -o FCFS_bank
 ./FCFS_bank <Number of Customers>
 
 ```bash
-$ ./FCFS_bank -o FCFS_bank 3
-Customer 1 wants to deposit: 74, Current Balance: 0
-Customer 2 wants to withdraw: 173, Current Balance: 74
-Customer 3 wants to deposit: 4, Current Balance: 74
-Customer 3 deposited: 4, Current Balance: 78
-Customer 2 withdrew: 73, Current Balance: 5
-Final Balance: 5
 
+##TEST CASE 1: Basic Functionality with 4 customers
 $ ./FCFS_bank -o FCFS_bank 4
 Customer 1 wants to deposit: 54, Current Balance: 0
 Customer 1 deposited: 54, Current Balance: 54
@@ -291,7 +285,19 @@ Customer 3 withdrew: 73, Current Balance: 2
 Customer 4 wants to deposit: 8, Current Balance: 2
 Customer 4 deposited: 8, Current Balance: 10
 Final Balance: 10
+##TEST CASE VERDICT: PASS
 
+##TEST CASE 2: Partial withdrawal with 3 customers
+$ ./FCFS_bank -o FCFS_bank 3
+Customer 1 wants to deposit: 74, Current Balance: 0
+Customer 2 wants to withdraw: 173, Current Balance: 74
+Customer 3 wants to deposit: 4, Current Balance: 74
+Customer 3 deposited: 4, Current Balance: 78
+Customer 2 withdrew: 73, Current Balance: 5
+Final Balance: 5
+##TEST CASE VERDICT: PASS
+
+##TEST CASE 3: Large number of customers (10)
 $ ./FCFS_bank -o FCFS_bank 10
 Customer 2 wants to deposit: 96, Current Balance: 0
 Customer 2 deposited: 96, Current Balance: 96
@@ -314,16 +320,21 @@ Customer 3 withdrew: 2, Current Balance: 35
 Customer 5 wants to deposit: 62, Current Balance: 35
 Customer 5 deposited: 62, Current Balance: 97
 Final Balance: 97
+##TEST CASE VERDICT: PASS
 
+##TEST CASE 4: Single Customer
 $ ./FCFS_bank -o FCFS_bank 1
 Customer 1 wants to deposit: 32, Current Balance: 0
 Customer 1 deposited: 32, Current Balance: 32
 Final Balance: 32
+##TEST CASE VERDICT: PASS
 
+##TEST CASE 5: Deposit after Request for Withdrawal with 2 customers
 $ ./FCFS_bank -o FCFS_bank 2
 Customer 2 wants to withdraw: 80, Current Balance: 0
 Customer 1 wants to deposit: 85, Current Balance: 0
 Customer 1 deposited: 85, Current Balance: 85
 Customer 2 withdrew: 80, Current Balance: 5
 Final Balance: 5
+##TEST CASE VERDICT: PASS
 ```
